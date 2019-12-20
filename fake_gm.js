@@ -141,7 +141,6 @@ function bind_events() {
     document.getElementById("reveal-button").addEventListener("mouseout", reveal_up);
     
     document.getElementById("reveal-button").addEventListener("touchstart", reveal_down);
-    document.getElementById("reveal-button").addEventListener("touchmove", reveal_up);
     document.getElementById("reveal-button").addEventListener("touchend", reveal_up);
     document.getElementById("reveal-button").addEventListener("touchcancel", reveal_up);
 
