@@ -1,0 +1,150 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* border: 1px solid black; */
+}
+
+#root {
+    width: 50vw;
+
+    margin: 0 auto;
+}
+
+.button {
+    cursor: pointer;
+
+    user-select: none;
+}
+
+.grid-cell {
+    padding: 5px;
+    margin: 2px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.grid-container {
+    display: grid;
+
+    grid-template-rows: 33% 11% 11% 11% 33%;
+    grid-template-columns: auto;
+
+    grid-template-areas:
+        "header header"
+        "body1-left body1-right"
+        "body2-left body2-right"
+        "body3-left body3-right"
+        "footer footer";
+}
+
+.header-item {
+    grid-area: header;
+}
+
+.footer-item {
+    grid-area: footer;
+}
+
+.body1-left {
+    grid-area: body1-left;
+
+    text-align: right;
+}
+
+.body1-right {
+    grid-area: body1-right;
+}
+
+.body2-left {
+    grid-area: body2-left;
+
+    text-align: right;
+}
+
+.body2-right {
+    grid-area: body2-right;
+}
+
+.body3-left {
+    grid-area: body3-left;
+
+    text-align: right;
+}
+
+.body3-right {
+    grid-area: body3-right;
+}
+
+/* Main Menu */
+
+#player-label {
+}
+
+#player-count {
+    width: auto;
+}
+
+#faker-label {
+}
+
+#faker-count {
+    width: auto;
+}
+
+#category-label {
+}
+
+#category {
+}
+
+#main-title {
+    font-size: x-large;
+    font-weight: bold;
+
+    text-align: center;
+}
+
+#start-game-button {
+    font-size: larger;
+    font-weight: bold;
+
+    text-align: center;
+    background-color: green;
+    color: white;
+}
+
+
+/* Player Screen */
+
+#player-title {
+    font-size: x-large;
+    font-weight: bold;
+
+    text-align: center;
+}
+
+#player-category {
+    
+}
+
+#reveal-button {
+    grid-column-start: body2-left;
+    grid-column-end: body2-right;
+
+    grid-row: body2-left;
+
+    text-align: center;
+
+    background-color: red;
+}
+
+#next-player-button {
+    font-size: larger;
+    font-weight: bold;
+
+    text-align: center;
+    background-color: green;
+    color: white;
+}

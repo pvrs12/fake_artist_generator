@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <script type="text/javascript" src="fake_gm_list.js"></script>
+        <script type="text/javascript" src="fake_gm.js"></script>
+
+        <link href="fake_gm.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="root" class="grid-container">
+            <!-- Main Menu -->
+            <div id="main-title" class="header-item main-menu grid-cell hidden">
+                Fake Game Master
+            </div>
+
+            <div id="player-label" class="main-menu body1-left grid-cell hidden">Player Count</div>
+            <input id="player-count" class="main-menu body1-right grid-cell hidden" type="number" min=3 max=10 value=5>
+
+            <div id="faker-label" class="main-menu body2-left grid-cell hidden">Fake Artist Count</div>
+            <input id="faker-count" class="main-menu body2-right grid-cell hidden" type="number" min=1 max=3 value=1>
+
+            <div id="category-label" class="main-menu body3-left grid-cell hidden">Category</div>
+            <select id="category" class="main-menu body3-right grid-cell hidden">
+            </select>
+
+            <div id="start-game-button" class="footer-item button main-menu grid-cell hidden">
+                Start Game!
+            </div>
+
+            <!-- Player Screen -->
+            <div id="player-title" class="header-item player-screen grid-cell hidden">
+                Player <span id="player-number"></span>
+            </div>
+
+            <div id="player-category-label" class="player-screen body1-left grid-cell hidden">Category</div>
+            <input id="player-category" class="player-screen body1-right grid-cell hidden" type="text" disabled="true">
+
+            <div id="reveal-button" class="button player-screen grid-cell hidden">
+                Hold to Reveal Word!
+            </div>
+
+            <div id="next-player-button" class="footer-item button player-screen grid-cell hidden">
+                Next Player!
+            </div>
+
+            <!-- Game screen?-->
+            <!-- maybe just have a screen with the category for the regular play-->
+            <!-- clicking the "end" button on this screen will trigger a 3 second countdown to accuse?-->
+        </div>
+    </body>
+</html>
