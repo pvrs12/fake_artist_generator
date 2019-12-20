@@ -139,6 +139,11 @@ function bind_events() {
     document.getElementById("reveal-button").addEventListener("mousedown", reveal_down);
     document.getElementById("reveal-button").addEventListener("mouseup", reveal_up);
     document.getElementById("reveal-button").addEventListener("mouseout", reveal_up);
+    
+    document.getElementById("reveal-button").addEventListener("touchstart", reveal_down);
+    document.getElementById("reveal-button").addEventListener("touchmove", reveal_up);
+    document.getElementById("reveal-button").addEventListener("touchend", reveal_up);
+    document.getElementById("reveal-button").addEventListener("touchcancel", reveal_up);
 
     document.getElementById("next-player-button").addEventListener("click", next_player);
 }
