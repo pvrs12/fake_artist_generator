@@ -1,6 +1,9 @@
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+body {
+    background: #EEEEEE;
+}
 
 #root {
     margin: 0 auto;
