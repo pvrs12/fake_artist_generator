@@ -64,6 +64,14 @@
     grid-column: right;
 }
 
+.body2-span {
+    grid-row: body2;
+		grid-column-start: left;
+		grid-column-end: end;
+
+		text-align: center;
+}
+
 .body3-left {
     grid-row: body3;
     grid-column: left;
