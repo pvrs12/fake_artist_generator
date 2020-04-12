@@ -14,7 +14,8 @@ function load_categories() {
     option.appendChild(option_text);
     category_select.appendChild(option);
 
-    for(let category_name in fake_gm_list) {
+    for(let category_id in fake_gm_categories) {
+        let category_name = fake_gm_categories[category_id];
         let option = document.createElement("option", {"value": category_name});
         let option_text = document.createTextNode(category_name);
 
@@ -65,17 +66,25 @@ function start_game() {
     faker_count = document.getElementById("faker-count").value;
     category = document.getElementById("category").value;
 
+    let available_word_list = null;
     if (category == "Random") {
-        let cat_keys = Object.keys(fake_gm_list);
-        let cat_len = cat_keys.length;
-        let cat_sel = Math.floor(Math.random() * cat_len);
-        category = cat_keys[cat_sel];
+        //do it straightup
+        available_word_list = Object.keys(fake_gm_list);
+    } else {
+        //find all words with the given category and choose one of those
+        available_word_list = [];
+        for(let word in fake_gm_list) {
+            if (fake_gm_list[word] == category) {
+                available_word_list.push(word);
+            }
+        }
     }
-
-    let word_keys = Object.keys(fake_gm_list[category]);
+    let word_keys = available_word_list;
     let word_len = word_keys.length;
     let word_sel = Math.floor(Math.random() * word_len);
-    secret_word = fake_gm_list[category][word_sel];
+    secret_word = available_word_list[word_sel]
+
+    category = fake_gm_list[secret_word];
 
     current_player = 0;
 
