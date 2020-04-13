@@ -89,9 +89,10 @@ function start_game() {
     current_player = 0;
 
     fakers = [];
+    //pick the requisite number of fakers
     for(let i = 0; i < faker_count; ++i) {
         let rand_faker = Math.floor(Math.random() * player_count);
-        //TODO: this feels dirty ;)
+        //if this person was already picked as a faker, pick again
         if (fakers.indexOf(rand_faker) != -1) {
             // go again!
             i--;
