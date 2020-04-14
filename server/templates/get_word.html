@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type="application/javascript">
-            setInterval(function() {
-                window.location.reload(true);
-            }, 10000);
-        </script>
-    </head>
-    <body>
-        <h3>Category: {{category}}</h3><br />
-        <h3>Word: {% if not word %}FAKER{% else %}{{word}}{% endif %}</h3><br />
+{% extends "base.html" %}
+{% block body %}
+<h3>Category: {{category}}</h3><br />
+<h3>Word: {% if not word %}FAKER{% else %}{{word}}{% endif %}</h3><br />
 
-        {% if vip %}
-            <form method="POST" action="/{{_id}}/new-round" >
-                <input type="submit" value="Start New Round" />
-            </form>
-        {% endif %}
-    </body>
-</html>
+{% if vip %}
+    <form method="POST" action="/{{_id}}/new-round" >
+        <input type="submit" value="Start New Round" />
+    </form>
+{% endif %}
+{% endblock %}

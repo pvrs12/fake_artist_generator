@@ -1,0 +1,22 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    background: #EEEEEE;
+}
+
+#root {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.button {
+    cursor: pointer;
+
+    user-select: none;
+}
+
+
+.hidden {
+    visibility: hidden;
+}
