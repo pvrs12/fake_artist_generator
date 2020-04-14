@@ -1,5 +1,19 @@
 var player_count, faker_count, current_player, category, secret_word, fakers;
 
+var player_colors = [
+    "#c2185b",
+    "#fbc02d",
+    "#00796b",
+    "#512da8",
+    "#e91e63",
+    "#5d4037",
+    "#4d6b2d",
+    "#e65100",
+    "#689f38",
+    "#2d4d6b",
+    "#1976d2",
+]
+
 function remove_all_children(element) {
     while(element.hasChildNodes()) {
         element.removeChild(element.lastChild);
@@ -58,7 +72,8 @@ function load_player() {
     // set player number
     let player_number = document.getElementById("player-number");
     remove_all_children(player_number);
-    player_number.appendChild(document.createTextNode(String(current_player + 1)));
+    player_number.style.color = player_colors[(current_player + 1) % player_colors.length];
+    player_number.appendChild(document.createTextNode("Player " + String(current_player + 1)));
 }
 
 function start_game() {
