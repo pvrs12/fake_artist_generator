@@ -3,8 +3,11 @@
 <h3>Category: {{category}}</h3><br />
 <h3>Word: {% if not word %}FAKER{% else %}{{word}}{% endif %}</h3><br />
 
+Draw your art here: <a href="{{link}}" target="_blank">{{link}}</a>
+
 {% if vip %}
     <form method="POST" action="/{{_id}}/new-round" >
+        <input type="hidden" name="aggie-link" value="{{link}}" />
         <input type="submit" value="Start New Round" />
     </form>
 {% endif %}

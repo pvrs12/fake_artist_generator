@@ -15,7 +15,6 @@ def _gen_id():
 
 class player:
     def __init__(self, name, vip):
-        # print(f"new player with name {name}")
         self.name = name
         self.vip = vip
         self.record = 0
@@ -42,6 +41,8 @@ class game:
 
         self.word = ""
         self.category = ""
+
+        self.draw_link = ""
 
     def _gen_word(self):
         with open(WORD_LIST_FILE) as gm_list:
@@ -73,7 +74,6 @@ class game:
                 i -= 1
                 continue
             self.fakers.add(rand_faker)
-        print(self.fakers)
 
         return True
 
@@ -94,7 +94,6 @@ def new_game():
         faker_count = int(flask.request.form.get("faker_count"))
         new_game = game(faker_count)
         active_games[new_game.id] = new_game
-        # print(active_games)
         return flask.redirect(f"/{new_game.id}/register")
 
 @app.route("/<int:_id>/register", methods=["GET", "POST"])
@@ -103,15 +102,12 @@ def register(_id):
         return flask.render_template("register.html", _id=_id)
     else:
         #unknown game, need to start a new one
-        # print(active_games)
         if _id not in active_games:
-            # print("inactive")
             return flask.redirect("/new-game")
         game = active_games[_id]
         if game.started:
             return flask.render_template("registration_closed.html")
         name = flask.request.form.get("name")
-        # print(name)
         player_id = game.add_player(name)
         flask.session["player-id"] = player_id
         flask.session["game-id"] = _id
@@ -124,14 +120,13 @@ def new_round(_id):
     game = active_games[_id]
     if "player-id" not in flask.session:
         return flask.redirect(f"/{_id}/register")
+
     player_id = flask.session["player-id"]
-    # print(player_id)
     success = game.new_round(player_id)
     if success:
-        # print("success")
+        game.draw_link = flask.request.form.get("aggie-link")
         return flask.redirect(f"/{_id}/get-word")
     else:
-        # print("fauil")
         #not vIP
         return flask.redirect(f"/{_id}")
 
@@ -146,7 +141,7 @@ def get_word(_id):
         return flask.redirect(f"/{_id}/register")
     player_id = flask.session["player-id"]
     word, category = game.get_word(player_id)
-    return flask.render_template("get_word.html", word=word, category=category, _id=_id, vip=game.is_vip(player_id))
+    return flask.render_template("get_word.html", word=word, category=category, _id=_id, vip=game.is_vip(player_id), link=game.draw_link)
 
 @app.route("/<int:_id>", methods=["GET"])
 def join_game(_id):

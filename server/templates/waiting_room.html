@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+
+{% block head %}
+    <meta http-equiv="refresh" content="5" >
+{% endblock %}
+
 {% block body %}
 <div style="text-align: left; max-width: 500px;">
     <h3>Players:</h3>
@@ -9,11 +14,14 @@
     </ul>
 
     {% if vip %}
+        Start a new drawing at <a href="https://aggie.io/" target="_blank">aggie.io</a> and paste the link below before starting the round.
+
         <form method="POST" action="/{{_id}}/new-round" >
+            <input name="aggie-link" type="text" placeholder="https://aggie.io/1234567" /><br />
             <input type="submit" value="Start New Round" />
         </form>
     {% endif %}
     <br />
-    This will automatically refresh every 10 seconds....
+    This will automatically refresh every 5 seconds....
 </div>
 {% endblock %}
