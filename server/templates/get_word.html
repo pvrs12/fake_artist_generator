@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+
+{% block head %}
+    <meta http-equiv="refresh" content="5" >
+{% endblock %}
+
 {% block body %}
 <h3>Category: {{category}}</h3><br />
 <h3>Word: {% if not word %}FAKER{% else %}{{word}}{% endif %}</h3><br />
