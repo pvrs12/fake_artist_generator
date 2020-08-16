@@ -53,14 +53,28 @@ function hide_view(view) {
 }
 
 function show_main() {
+    hide_view("interim-screen");
     hide_view("player-screen");
     show_view("main-menu");
+}
+
+function show_interim() {
+    // set player number
+    let player_number = document.getElementById("interim-player-number");
+    remove_all_children(player_number);
+    player_number.style.color = player_colors[(current_player + 1) % player_colors.length];
+    player_number.appendChild(document.createTextNode("Player " + String(current_player + 1)));
+
+    hide_view("main-menu");
+    hide_view("player-screen");
+    show_view("interim-screen");
 }
 
 function show_player() {
     load_player();
 
     hide_view("main-menu");
+    hide_view("interim-screen");
     show_view("player-screen");
 }
 
@@ -155,7 +169,7 @@ function next_player() {
         delete player_count, faker_count, current_player, category, secret_word, fakers;
         return;
     }
-    show_player();
+    show_interim();
 }
 
 function bind_events() {
@@ -168,6 +182,8 @@ function bind_events() {
     document.getElementById("reveal-button").addEventListener("touchstart", reveal_down);
     document.getElementById("reveal-button").addEventListener("touchend", reveal_up);
     document.getElementById("reveal-button").addEventListener("touchcancel", reveal_up);
+
+    document.getElementById("interim-next-player-button").addEventListener("click", show_player)
 
     document.getElementById("next-player-button").addEventListener("click", next_player);
 }
